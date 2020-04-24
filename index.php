@@ -1,6 +1,6 @@
 <?php
 
-echo "Hello World!";
+#echo "Hello World!";
 $file = fopen('index.html','r');
 
     if($file){
