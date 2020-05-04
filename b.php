@@ -40,8 +40,12 @@ $file = fopen('index.html','r');
             <input name="animal_activity" type="text" placeholder='animal_activity'/>
             <input type="submit" value="Predict" >
     </form>
+    <?php echo "we have received your request with parameters: " .$_POST['cow_id'] .",".$_POST['cow_temp']."," .$_POST['animal_activity'] ;?>
+    <?php echo '<br/>'; ?>
+    <?php echo "Our precdition is: Pregnant";?>
 	  </div>
    </div>
  
 </body>
 </html>
+
