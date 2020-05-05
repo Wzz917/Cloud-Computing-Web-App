@@ -33,12 +33,12 @@ body a{
 .header_top h1{
 	color:#fff;
 	margin-top:0em;
-	font: italic 400 100px/100px "Lato", sans-serif;
+	font: italic 400 75px/75px "Lato", sans-serif;
 	font-style:italic;
 	letter-spacing: -0.025em;
 }
 .header_top h2{
-	font: italic 400 100px/100px "Lato", sans-serif;
+	font: italic 400 75px/75px "Lato", sans-serif;
 	letter-spacing: -0.025em;
 	color:#fff;
 }
