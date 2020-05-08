@@ -23,7 +23,7 @@ $serverName = "zw573sqldb.database.windows.net"; // update me
 	  <div class="header_top">
 		<h1>Cow pregnancy</h1>
         <h2>prediction</h2>
-        <form action="b.php" method="post">
+        <form action="index.php" method="post">
             <select name="cow_id">
                 <option value = "">Select Cow ID</option>
                     <?php
