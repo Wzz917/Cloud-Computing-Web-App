@@ -13,19 +13,19 @@
 		<h1>Cow pregnancy</h1>
         <h2>prediction</h2>
         <form action="b.php" method="post">
-        <select name="cow_id">
-            <option value = "26">Cow ID</option>
-                <?php
-                    $arr = array('26','86','2714');
-                    foreach ($arr as $v){
-                        echo "<option value = '".$v."'>".$v."</option>";
-                    }
-                ?>
-        </select>
+            <select name="cow_id">
+                <option value = "">Select Cow ID</option>
+                    <?php
+                        $arr = array('26','86','2714');
+                        foreach ($arr as $v){
+                            echo "<option value = '".$v."'>".$v."</option>";
+                        }
+                    ?>
+            </select>
             <input name="cow_temp" type="text" placeholder='cow_temp'/>
             <input name="animal_activity" type="text" placeholder='animal_activity'/>
             <input type="submit" value="Predict" >
-    </form>
+        </form>
 	  </div>
    </div>
  
