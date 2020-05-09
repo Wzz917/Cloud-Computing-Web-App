@@ -1,11 +1,39 @@
 <?php
+    include("includes/init.php");
+    // phpinfo();
+  
+    // displaying current directory 
+    echo "test" ;
+    $serverName = "zw573sqlserver.database.windows.net"; // update me
+        $connectionOptions = array(
+            "Database" => "zw573sqldb", // update me
+            "Uid" => "a7149007", // update me
+            "PWD" => "Wzz917917" // update me
+        );
+    //Establishes the connection
+    //Establishes the connection
+    $conn = sqlsrv_connect($serverName, $connectionOptions);
+    if($conn)
+        echo "Connected!"
 
-$serverName = "zw573sqldb.database.windows.net"; // update me
-    $connectionOptions = array(
-        "Database" => "zw573sqldb", // update me
-        "Uid" => "a7149007", // update me
-        "PWD" => "Wzz917917" // update me
-    );
+    // try {    
+    //     $hostname = 'zw573sqlserver.database.windows.net';
+    //     $dbname = 'zw573sqldb';
+    //     $username = 'a7149007';
+    //     $pwd = 'Wzz917917';
+    
+    //     $pdo = new PDO ("dblib:version=8.0;charset=UTF-8;host={$hostname};dbname={$dbname}", $username, $pwd);
+    //     $query = "SELECT * FROM Cows";
+    //     $statement = $pdo->prepare($query);
+    //     $statement->execute();
+        
+    //     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+    //     var_dump($results);
+    
+    // } catch (PDOException $e) {
+    //     echo "Failed to get DB handle: " . $e->getMessage() . "\n";
+    //     exit;
+    // }
 ?>
 
 
