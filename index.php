@@ -1,7 +1,6 @@
 <?php
     include("includes/init.php");
     // phpinfo();
-  
     // displaying current directory 
     $serverName = "zw573sqlserver.database.windows.net"; // update me
         $connectionOptions = array(
@@ -9,16 +8,24 @@
             "Uid" => "a7149007", // update me
             "PWD" => "Wzz917917" // update me
         );
+
+
+    $cow_id = $_GET['cow_id'];
+    // echo $cow_id;
     //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
-    if($conn)
-        $sql= "SELECT *
-         FROM [dbo].[test]";
+    $sql= "SELECT *
+         FROM [dbo].[test] ";
+    if (!empty($cow_id) && isset($cow_id)) {
+        $cow_id = strval($cow_id);
+        $sql .= "WHERE [dbo].[test].Cow_id = ".$cow_id;
+    }
+    if($conn) {   
         $getResults= sqlsrv_query($conn, $sql);
         // echo ("Reading data from table" . PHP_EOL);
         if ($getResults == FALSE)
             echo (sqlsrv_errors());
-        
+    }     
 ?>
 
 
@@ -54,7 +61,7 @@ function print_record($record) { ?>
             <h1>Select Cow</h1>
         </div> -->
         <div class="row">
-        <form action="index.php" method="post">
+        <form action="index.php" method="get">
             <select name="cow_id">
                 <option value = "">Select Cow ID</option>
                     <?php
@@ -67,7 +74,7 @@ function print_record($record) { ?>
             <!-- <input name="cow_temp" type="text" placeholder='cow_temp'/>
             <input name="animal_activity" type="text" placeholder='animal_activity'/> -->
             <!-- <input class = "button" type="submit" value="Search" > -->
-            <button class = "button" name="search"><img class = "img_setting" src="images/search.png">Search</button>
+            <button type="submit" class = "button" name="search"><img class = "img_setting" src="images/search.png">Search</button>
         </form>
         <a href="index.php" class="button"><img class = "img_setting" src="images/refresh.jpg">Refresh</a>
         </div>
