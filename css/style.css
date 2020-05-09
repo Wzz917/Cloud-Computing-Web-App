@@ -1,6 +1,28 @@
 /*
 
 */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.real_header {
+	background: url(../images/cows3.jpg) no-repeat center top;
+	width: 80vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
+	min-height:550px;
+}
+
+/* 
 h4, h5, h6,
 h1, h2, h3 {margin-top: 0;}
 ul, ol {margin: 0;}
@@ -18,13 +40,18 @@ body a{
 	-ms-transition:0.5s all;
 }
 .header{
-	background: url(../images/banner.jpg) no-repeat center top;
+	background: url(../images/cows2.jpg) no-repeat center top;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+    align-items: center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	background-position: center;
-	min-height:750px;
+	min-height:550px;
 }
 .header_top{
 	padding-top:15em;
@@ -128,7 +155,7 @@ span.main {
 	cursor:pointer;	
 	width:100%;
 }
-/*----responsive-menu-start---*/
+
 @media(max-width:768px){
 .top-nav ul li{
 	display:block;
@@ -384,7 +411,7 @@ p.m_2 a:hover{
 	color:#ffde00;
 	text-decoration:none;
 }
-/*--footer--*/
+
 .footer{
 	background: #272727;
 	padding:8em 0;
@@ -488,7 +515,7 @@ ul.list2 li a:hover{
 	color:#fff;
 	text-decoration:none;
 }
-/*--about--*/
+
 .header_about{
 	background: url(../images/banner.jpg) no-repeat center top;
 	-webkit-background-size: cover;
@@ -660,7 +687,7 @@ ul.about_box h4{
 	font: 300 16px/25px Lato, sans-serif;
 	line-height:1.8em;
 }
-/*--services--*/
+
 .grid_4 {
 	padding:8em 0;
 }
@@ -683,7 +710,7 @@ p.service_desc{
 .service_box{
 	margin-bottom:5em;
 }
-/*--blog--*/
+
 .blog_box h3{
 	font: 300 20px/25px Lato, sans-serif;	
 	text-transform:uppercase;
@@ -723,7 +750,7 @@ i.blog-icon{
 	color:#2cb149;
 	margin-right: 10px;
 }
-/* Button 3d */
+
 .btn1 {
 	border: none;
 	font-family: inherit;
@@ -841,7 +868,7 @@ img.zoom-img {
 	-moz-transition-timing-function: ease-out;
 	-moz-transition-duration: 250ms;
 }
-/*--blog-single--*/
+
 .comment {
 	margin-top:4em;
 }
@@ -953,7 +980,7 @@ ul.comment-list .desc1 h5 a:hover {
 label.btn1.btn2.btn-8.btn-8c {
 	width: 20%;
 }
-/*--sontact--*/
+
 .contact {
 	margin-top: 4em;
 }
@@ -1004,7 +1031,7 @@ label.btn1.btn2.btn-8.btn-8c {
 a:hover, a:focus {
 	text-decoration:none !important;
 }
-/*--responsive design--*/
+
 @media (max-width:1024px){
 .header {
 	min-height:550px;
@@ -1452,4 +1479,4 @@ label.btn1.btn2.btn-8.btn-8c {
 	margin-right: 0;
 	float: none;
 }
-}
+} */

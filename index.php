@@ -3,54 +3,57 @@
     // phpinfo();
   
     // displaying current directory 
-    echo "test" ;
     $serverName = "zw573sqlserver.database.windows.net"; // update me
         $connectionOptions = array(
-            "Database" => "zw573sqldb", // update me
+            "Database" => "taylor1", // update me
             "Uid" => "a7149007", // update me
             "PWD" => "Wzz917917" // update me
         );
     //Establishes the connection
-    //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
     if($conn)
-        echo "Connected!"
-
-    // try {    
-    //     $hostname = 'zw573sqlserver.database.windows.net';
-    //     $dbname = 'zw573sqldb';
-    //     $username = 'a7149007';
-    //     $pwd = 'Wzz917917';
-    
-    //     $pdo = new PDO ("dblib:version=8.0;charset=UTF-8;host={$hostname};dbname={$dbname}", $username, $pwd);
-    //     $query = "SELECT * FROM Cows";
-    //     $statement = $pdo->prepare($query);
-    //     $statement->execute();
+        $sql= "SELECT *
+         FROM [dbo].[test]";
+        $getResults= sqlsrv_query($conn, $sql);
+        // echo ("Reading data from table" . PHP_EOL);
+        if ($getResults == FALSE)
+            echo (sqlsrv_errors());
         
-    //     $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-    //     var_dump($results);
-    
-    // } catch (PDOException $e) {
-    //     echo "Failed to get DB handle: " . $e->getMessage() . "\n";
-    //     exit;
-    // }
 ?>
+
+
+<?php
+function print_record($record) { ?>
+  <tr>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["Cow_id"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["Day1"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["Day2"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["Day3"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["Day4"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["Day5"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["Day6"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["Day7"]); ?></td>
+  </tr>
+<?php
+}
+?>
+
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<link href="css/style.css" rel='stylesheet' type='text/css' />
-<meta cahrset="utf-8">
-
-<title>Cow pregnancy prediction</title>
+    <link href="css/site.css" rel='stylesheet' type='text/css' />
+    <meta cahrset="utf-8">
+    <title>Cow pregnancy prediction</title>
 </head>
 <body>
-<div class="header wow fadeInUpBig" data-wow-delay="0.4s">
-   <div class="container">
-	  <div class="header_top">
-		<h1>Cow pregnancy</h1>
-        <h2>prediction</h2>
+    <?php include("includes/header.php"); ?>
+    <div class="container">
+        <!-- <div class="row">
+            <h1>Select Cow</h1>
+        </div> -->
+        <div class="row">
         <form action="index.php" method="post">
             <select name="cow_id">
                 <option value = "">Select Cow ID</option>
@@ -63,10 +66,35 @@
             </select>
             <!-- <input name="cow_temp" type="text" placeholder='cow_temp'/>
             <input name="animal_activity" type="text" placeholder='animal_activity'/> -->
-            <input type="submit" value="Predict" >
+            <!-- <input class = "button" type="submit" value="Search" > -->
+            <button class = "button" name="search"><img class = "img_setting" src="images/search.png">Search</button>
         </form>
-	  </div>
-   </div>
- 
+        <a href="index.php" class="button"><img class = "img_setting" src="images/refresh.jpg">Refresh</a>
+        </div>
+    </div>
+    <div class ="container">
+        <div class = "table_format">
+            <table>
+                <tr>
+                <th class = "table_val">CowID</th>
+                <th class = "table_val">Day 1</th>
+                <th class = "table_val">Day 2</th>
+                <th class = "table_val">Day 3</th>
+                <th class = "table_val">Day 4</th>
+                <th class = "table_val">Day 5</th>
+                <th class = "table_val">Day 6</th>
+                <th class = "table_val">Day 7</th>
+                </tr>
+            <!-- </div> -->
+            <?php 
+                while ($record = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
+                    print_record($record);
+                }
+            ?>
+
+            </table>
+        </div>
+    </div>
+
 </body>
 </html>
