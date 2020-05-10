@@ -15,12 +15,13 @@
     //Establishes the connection
     $conn = sqlsrv_connect($serverName, $connectionOptions);
     $sql= "SELECT *
-         FROM [dbo].[test] ";
+         FROM [dbo].[result] ";
     if (!empty($cow_id) && isset($cow_id)) {
         $cow_id = strval($cow_id);
-        $sql .= "WHERE [dbo].[test].Cow_id = ".$cow_id;
+        $sql .= "WHERE [dbo].[result].cow_id = ".$cow_id;
     }
-    if($conn) {   
+    if($conn) { 
+        // echo $sql;  
         $getResults= sqlsrv_query($conn, $sql);
         // echo ("Reading data from table" . PHP_EOL);
         if ($getResults == FALSE)
@@ -30,16 +31,21 @@
 
 
 <?php
-function print_record($record) { ?>
+function print_record($record) { 
+    $res_str = $record['res'];
+    // echo $res_str;
+    $days = explode(',', $res_str);
+    // echo $days[0];
+    ?>
   <tr>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["Cow_id"]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["Day1"]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["Day2"]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["Day3"]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["Day4"]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["Day5"]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["Day6"]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["Day7"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["cow_id"]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($days[6]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($days[5]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($days[4]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($days[3]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($days[2]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($days[1]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($days[0]); ?></td>
   </tr>
 <?php
 }
@@ -84,13 +90,13 @@ function print_record($record) { ?>
             <table>
                 <tr>
                 <th class = "table_val">CowID</th>
-                <th class = "table_val">Day 1</th>
-                <th class = "table_val">Day 2</th>
-                <th class = "table_val">Day 3</th>
-                <th class = "table_val">Day 4</th>
-                <th class = "table_val">Day 5</th>
-                <th class = "table_val">Day 6</th>
-                <th class = "table_val">Day 7</th>
+                <th class = "table_val">Day 1 %</th>
+                <th class = "table_val">Day 2 %</th>
+                <th class = "table_val">Day 3 %</th>
+                <th class = "table_val">Day 4 %</th>
+                <th class = "table_val">Day 5 %</th>
+                <th class = "table_val">Day 6 %</th>
+                <th class = "table_val">Day 7 %</th>
                 </tr>
             <!-- </div> -->
             <?php 
