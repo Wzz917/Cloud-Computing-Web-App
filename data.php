@@ -3,22 +3,40 @@
     // phpinfo();
     // displaying current directory 
     $serverName = "zw573sqlserver.database.windows.net"; // update me
-        $connectionOptions = array(
-            "Database" => "taylor1", // update me
-            "Uid" => "a7149007", // update me
-            "PWD" => "Wzz917917" // update me
-        );
+    $connectionOptions = array(
+        "Database" => "zw573sqldb", // update me
+        "Uid" => "a7149007", // update me
+        "PWD" => "Wzz917917" // update me
+    );
+    $connectionOptions2 = array(
+        "Database" => "zw573sqldb2", // update me
+        "Uid" => "a7149007", // update me
+        "PWD" => "Wzz917917" // update me
+    );
+    $connectionOptions3 = array(
+        "Database" => "zw573sqldb3", // update me
+        "Uid" => "a7149007", // update me
+        "PWD" => "Wzz917917" // update me
+    );
 
 
     $cow_id = $_GET['cow_id'];
     // echo $cow_id;
     //Establishes the connection
-    $conn = sqlsrv_connect($serverName, $connectionOptions);
-    $sql= "SELECT *
-         FROM [dbo].[result] ";
+    
     if (!empty($cow_id) && isset($cow_id)) {
-        $cow_id = strval($cow_id);
-        $sql .= "WHERE [dbo].[result].cow_id = ".$cow_id;
+        if ($cow_id == 26) {
+            $conn = sqlsrv_connect($serverName, $connectionOptions);
+            $sql= "SELECT * FROM [dbo].[Cows] ";
+        }
+        else if ($cow_id == 2714) {
+            $conn = sqlsrv_connect($serverName, $connectionOptions2);
+            $sql= "SELECT * FROM [dbo].[Cows] ";
+        }
+        else if ($cow_id == 86) {
+            $conn = sqlsrv_connect($serverName, $connectionOptions3);
+            $sql= "SELECT * FROM [dbo].[Cows] ";
+        }
     }
     if($conn) { 
         // echo $sql;  
@@ -31,21 +49,9 @@
 
 
 <?php
-function print_record($record) { 
-    $res_str = $record['res'];
-    // echo $res_str;
-    $days = explode(',', $res_str);
-    // echo $days[0];
-    ?>
+function print_record($record) { ?>
   <tr>
-    <td class = "table_val2"><?php echo htmlspecialchars($record["cow_id"]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($days[6]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($days[5]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($days[4]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($days[3]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($days[2]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($days[1]); ?></td>
-    <td class = "table_val2"><?php echo htmlspecialchars($days[0]); ?></td>
+    <td class = "table_val2"><?php echo htmlspecialchars($record["device_id"]); ?></td>
   </tr>
 <?php
 }
@@ -67,9 +73,9 @@ function print_record($record) {
             <h1>Select Cow</h1>
         </div> -->
         <div class="row">
-        <form action="index.php" method="get">
+        <form action="data.php" method="get">
             <select name="cow_id">
-                <option value = "">Select Cow ID</option>
+                <!-- <option value = "">Select Cow ID</option> -->
                     <?php
                         $arr = array('26','86','2714');
                         foreach ($arr as $v){
@@ -82,7 +88,7 @@ function print_record($record) {
             <!-- <input class = "button" type="submit" value="Search" > -->
             <button type="submit" class = "button" name="search"><img class = "img_setting" src="images/search.png">Search</button>
         </form>
-        <a href="index.php" class="button"><img class = "img_setting" src="images/refresh.png">Refresh</a>
+        <a href="data.php" class="button"><img class = "img_setting" src="images/refresh.png">Refresh</a>
         </div>
     </div>
     <div class ="container">
