@@ -8,7 +8,12 @@ description: "This sample demonstrates a tiny Hello World PHP app for App Servic
 urlFragment: php-docs-hello-world
 ---
 
-# PHP Hello World
+
+# PHP-based Web Project
+
+The web app is built for Cornell CS5412 Cloud Computing final project. It is used to provide uers with the prediction results stored in SQL databases. The connection between SQL databases and the application has been established. It has been deployed using Azure App Service.
+
+http://taylortaocs5412.azurewebsites.net/
 
 This sample demonstrates a tiny Hello World PHP app for [App Service](https://docs.microsoft.com/azure/app-service).
 
