@@ -11,7 +11,7 @@ urlFragment: php-docs-hello-world
 
 # PHP-based Web Project
 
-The web app is built for Cornell CS5412 Cloud Computing final project. It is used to provide uers with the prediction results stored in SQL databases. The connection between SQL databases and the application has been established. It has been deployed using Azure App Service.
+The web app is built for Cornell CS5412 Cloud Computing final project. It is used to provide users with the latest prediction results stored in SQL databases. The connection between SQL databases and the application has been established. It has been deployed using Azure App Service.
 
 http://taylortaocs5412.azurewebsites.net/
 
