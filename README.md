@@ -15,6 +15,9 @@ The web app is built for Cornell CS5412 Cloud Computing final project. It is use
 
 http://taylortaocs5412.azurewebsites.net/
 
+
+Only index.php is written for the project. Other html files are references.
+
 This sample demonstrates a tiny Hello World PHP app for [App Service](https://docs.microsoft.com/azure/app-service).
 
 ## Contributing
